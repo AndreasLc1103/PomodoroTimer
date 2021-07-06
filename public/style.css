@@ -1,0 +1,16 @@
+.time_container {
+    align-items: center;
+}
+
+#main_container {
+    margin-top: 5rem;
+}
+
+#timer_container {
+    margin-top: 5rem;
+    justify-content: center;
+}
+
+#Pomo_title {
+    justify-content: center;
+}
