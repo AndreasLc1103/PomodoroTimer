@@ -10,6 +10,7 @@
 
 <body>
     <div>
+        <!--Title and subtitling-->
         <div class="title_container">
             <h1 id="Pomo_title">PomodoroTimer</h1>
             <h2>
@@ -17,21 +18,25 @@
                 <a href="https://github.com/AndreasLc1103" target="_blank">Andreaslc1103</a>
             </h2>
         </div>
-
+        <!--Content window-->
         <div class="status_windows">
+            <!--Minutes Section of timer-->
             <div class="time_container" id="min_container">
                 <h3 id="min_display">00</h3>
                 <label for="min_display">Minutes</label>
             </div>
+            <!--Colon of Time layout--->
             <div class="time_container" id="colon_container">
                 <h3>:</h3>
             </div>
+            <!---Seconds container and layout--->
             <div class="time_container" id="sec_container">
                 <h3 id="sec_display">00</h3>
                 <label for="sec_display">Seconds</label>
             </div>
-
+            <!--Button container for interaction-->
             <div class="controllers" id="button_control">
+                <!--Drop down for time selections--->
                 <div class="controllers">
                     <select id="interval_times">
                     <option value="25 min">25 min</option>
@@ -39,6 +44,7 @@
                 </select>
                     <label class="control_text" for="interval_times"></label>
                 </div>
+                <!---Drop down for break times--->
                 <div class="controllers">
                     <select id="break_times">
                     <option value="5 min">5 min</option>
@@ -47,6 +53,7 @@
 
                     <label class="control_text" for="break_times">break times</label>
                 </div>
+                <!--Interaction buttons-->
                 <div class="controllers">
                     <button id="reset_bttn">
                     Reset
