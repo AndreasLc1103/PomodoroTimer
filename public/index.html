@@ -10,15 +10,52 @@
 
 <body>
     <div>
-        <div>
-            <h1 id="heading1">PomodoroTimer</h1>
+        <div class="title_container">
+            <h1 id="Pomo_title">PomodoroTimer</h1>
             <h2>
-                Author : <img src="images\Octocat.png" alt="GitHub:"><a href="https://github.com/AndreasLc1103">Andreaslc1103</a>
+                Author : <img src="images\Octocat.png" alt="GitHub:" id="octo_png">
+                <a href="https://github.com/AndreasLc1103" target="_blank">Andreaslc1103</a>
             </h2>
         </div>
 
-        <div>
+        <div class="status_windows">
+            <div class="time_container" id="min_container">
+                <h3 id="min_display">00</h3>
+                <label for="min_display">Minutes</label>
+            </div>
+            <div class="time_container" id="colon_container">
+                <h3>:</h3>
+            </div>
+            <div class="time_container" id="sec_container">
+                <h3 id="sec_display">00</h3>
+                <label for="sec_display">Seconds</label>
+            </div>
 
+            <div class="controllers" id="button_control">
+                <div class="controllers">
+                    <select id="interval_times">
+                    <option value="25 min">25 min</option>
+                    <option value="50 min">50 min</option>
+                </select>
+                    <label class="control_text" for="interval_times"></label>
+                </div>
+                <div class="controllers">
+                    <select id="break_times">
+                    <option value="5 min">5 min</option>
+                    <option value="10 min">10 min</option>
+                </select>
+
+                    <label class="control_text" for="break_times">break times</label>
+                </div>
+                <div class="controllers">
+                    <button id="reset_bttn">
+                    Reset
+                </button>
+                </div>
+                <div class="controllers">
+                    <button id="start_bttn">Start</button>
+                </div>
+            </div>
         </div>
 
     </div>
