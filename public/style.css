@@ -2,6 +2,8 @@
     align-items: center;
 }
 
+body {}
+
 #main_container {
     margin-top: 5rem;
 }
@@ -13,4 +15,8 @@
 
 #Pomo_title {
     justify-content: center;
+}
+
+#minute_counter {
+    justify-content: end;
 }
