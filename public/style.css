@@ -1,22 +1,33 @@
-.time_container {
+.time {
+    text-align: center;
+    align-items: center;
+    font-size: 8rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 0.1rem -0.1rem 0.15rem black;
+}
+
+.controls {
+    padding: 0.5rem;
+}
+
+.title_info {
+    text-align: center;
     align-items: center;
 }
 
-body {}
+.start {
+    margin-top: 5rem;
+}
+
+body {
+    color: White;
+    background-image: url("./images/Deep-Space.png");
+}
+
+#inner_container {
+    margin-top: 9rem;
+}
 
 #main_container {
     margin-top: 5rem;
-}
-
-#timer_container {
-    margin-top: 5rem;
-    justify-content: center;
-}
-
-#Pomo_title {
-    justify-content: center;
-}
-
-#minute_counter {
-    justify-content: end;
 }
