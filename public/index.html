@@ -12,7 +12,7 @@
 <body>
     <div id="main_container" class=" title_info container">
         <!--Title and subtitling-->
-        <div class="row justify-content-md-center">
+        <div class="row-fluid justify-content-md-center">
             <div class="col-sm-auto col-md-auto col-lg-auto" id="title_column">
                 <h1 class="title_info" id="Pomo_title">PomodoroTimer</h1>
             </div>
@@ -38,7 +38,7 @@
 
                 <div class="container" id="inner_container">
                     <div class="row justify-content-md-center" id="counter_container">
-                        <div id="timeDisplay" class=" time col col-xs">
+                        <div id="timeDisplay" class="time col col-xs">
                             00:00
                         </div>
                     </div>
@@ -47,11 +47,11 @@
             <div class="col col-sm-2 col-md-2 col-lg-2"></div>
         </div>
 
-        <div class="row">
+        <div class="controls row">
             <div class="col">
                 <label for="workTime Selector"> Work Times</label>
                 <br>
-                <select class="controls custom-select custom-select-sm mb-2" name="workTimes" id="workTimeSelector">
+                <select class="custom-select custom-select-sm mb-2" name="workTimes" id="workTimeSelector">
                 <option value="None"></option>
                 <option value="25min">25 Minutes</option>
                 <option value="50min">50 Minutes</option>
@@ -67,8 +67,8 @@
             </div>
         </div>
 
-        <div class="start row row-cols-3 small">
-            <div class="col"></div>
+        <div class="start row row-cols- small">
+
             <div class="col">
                 <button type="button" class="btn btn-primary btn-block">
                     Start
@@ -80,10 +80,11 @@
                 </button>
             </div>
         </div>
+        <div>
 
-    </div>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
 
