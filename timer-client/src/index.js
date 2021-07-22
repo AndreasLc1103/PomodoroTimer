@@ -3,12 +3,13 @@ import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import TimeSelector from "./Components/TimerComponents/ControlComponents/TimeSelector";
 import ControlsComponent from "./Components/TimerComponents/ControlsComponent";
+import TimerComponent from "./Components/TimerComponents/TimerComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../src/style.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ControlsComponent />
+    <TimerComponent />
   </React.StrictMode>,
   document.getElementById("root")
 );
