@@ -1,6 +1,6 @@
 import React from "react";
 import { ReactDOM } from "react";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col, Button, FormGroup } from "reactstrap";
 import TimeSelector from "./ControlComponents/TimeSelector";
 
 class ControlsComponent extends React.Component {
@@ -8,21 +8,25 @@ class ControlsComponent extends React.Component {
     return (
       <Container fluid={true}>
         <Row>
-          <Col>
-            <TimeSelector typeSelect="workTime" />
+          <Col xs={6} sm={6} md={6} lg={6}>
+            <FormGroup>
+              <TimeSelector typeSelect="workTime" />
+            </FormGroup>
           </Col>
-          <Col>
-            <TimeSelector typeSelect="breakTime" />
+          <Col md={6}>
+            <FormGroup>
+              <TimeSelector typeSelect="breakTime" />
+            </FormGroup>
           </Col>
         </Row>
         <Row>
           <Col>
-            <Button color="primary" size="sm" block={true}>
+            <Button color="primary" size="sm" block>
               Start
             </Button>
           </Col>
           <Col>
-            <Button color="danger" size="lg" block>
+            <Button color="danger" size="sm" block>
               reset
             </Button>
           </Col>
