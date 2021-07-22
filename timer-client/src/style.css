@@ -1,0 +1,13 @@
+.control_Selector {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}
+
+.select_text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 100%;
+}
