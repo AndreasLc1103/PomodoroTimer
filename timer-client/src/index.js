@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import TimeSelector from "./Components/TimerComponents/ControlComponents/TimeSelector";
+import ControlsComponent from "./Components/TimerComponents/ControlsComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../src/style.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <TimeSelector typeSelect="workTime" />
-    <TimeSelector typeSelect="breakTime" />
+    <ControlsComponent />
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -29,7 +29,7 @@ class TimeSelector extends React.Component {
     switch (typeSelect) {
       case "breakTime":
         return (
-          <Container>
+          <Container fluid={true}>
             <Row className="select_text">
               <Col className="control_Selector">
                 <label className="select_text" for="break_selector">
@@ -38,7 +38,7 @@ class TimeSelector extends React.Component {
               </Col>
             </Row>
             <Row xs={1} className="select_text">
-              <Col className="control_Selector" sm={3}>
+              <Col className="control_Selector">
                 <CustomInput
                   className
                   type="select"
@@ -56,7 +56,7 @@ class TimeSelector extends React.Component {
         );
       case "workTime":
         return (
-          <Container>
+          <Container fluid={true}>
             <Row className="select_text">
               <Col className="control_Selector">
                 <label className="select_text" for="break_selector">
@@ -65,7 +65,7 @@ class TimeSelector extends React.Component {
               </Col>
             </Row>
             <Row xs={1} className="select_text">
-              <Col className="control_Selector" sm={3}>
+              <Col className="control_Selector">
                 <CustomInput
                   className
                   type="select"
