@@ -3,6 +3,7 @@ import React from "react";
 import { ReactDOM } from "react-dom";
 import { Container, Row, Col } from "reactstrap";
 import ControlsComponent from "./ControlsComponent";
+import TimeDisplay from "../TimerComponents/TimeDisplay";
 
 class TimerComponent extends React.Component {
   constructor(props) {
@@ -19,8 +20,7 @@ class TimerComponent extends React.Component {
       <Container className="themed-container" fluid={true}>
         <Row>
           <Col></Col>
-
-          <Col xs={6} sm={6} md={8} lg={8} xl={8}>
+          <Col>
             {/*This is to store the heading */}
             <Container>
               <Row>
@@ -32,7 +32,7 @@ class TimerComponent extends React.Component {
         </Row>
         <Row className="TimeDisplay">
           <Col></Col>
-          <Col>{this.state.current_timer}</Col>
+          <Col>{<TimeDisplay current_time={"00:00"} />}</Col>
           <Col></Col>
         </Row>
         <Row className="controls">
