@@ -11,8 +11,29 @@ class TimerComponent extends React.Component {
     this.state = {
       workTimerActive: false,
       breakTimerActive: false,
-      current_timer: ["00", ":", "00"],
+      current_timer: {
+        mintutes: "00",
+        seconds: "00",
+      },
     };
+  }
+  /**
+   * Tick is a function that manages the timer state and decrements the count used to keep track of time
+   */
+  Tick() {
+    const current_time = { ...this.current_timer };
+    this.current_time.mintutes = Number(this.current_time.mintutes);
+    this.current_time.seconds = Number(this.current_time.seconds);
+    if (current_time.seconds === 0 && current_time.seconds !== 0) {
+      this.current_time.mintutes = String(this.current_time.seconds - 1);
+      this.current_time.seconds = "59";
+    } else if (current_time.seconds === 0 && current_time.mintutes === 0) {
+      // Thinking on what to do
+    } else {
+      this.current_time.seconds = String(this.current_time.seconds - 1);
+    }
+
+    this.setState({ current_time: { ...current_time } });
   }
 
   render() {
@@ -32,7 +53,7 @@ class TimerComponent extends React.Component {
         </Row>
         <Row className="TimeDisplay">
           <Col></Col>
-          <Col>{<TimeDisplay current_time={"00:00"} />}</Col>
+          <Col>{<TimeDisplay current_time={this.state.current_timer} />}</Col>
           <Col></Col>
         </Row>
         <Row className="controls">
