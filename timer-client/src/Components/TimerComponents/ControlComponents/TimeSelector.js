@@ -8,17 +8,13 @@ import { Container, Row, Col, CustomInput } from "reactstrap";
  * for the user to select a specific time interval
  */
 class TimeSelector extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { target: "" };
-  }
   /**
    * handles change to the select and sets state
    * to the component.
    * @param {*} event
    */
   handleChange(event) {
-    this.setState({ target: event.target.value });
+    this.props.handleChange(event);
   }
   /**
    * render() displays a view to the webpage.
@@ -37,16 +33,15 @@ class TimeSelector extends React.Component {
                 </label>
               </Col>
             </Row>
-            <Row xs={1} className="select_text">
-              <Col className="control_Selector">
+            <Row className="select_text">
+              <Col xs={12} sm={12} md={12} lg={12} className="control_Selector">
                 <CustomInput
-                  className
                   type="select"
                   id="break_selector"
-                  value={this.state.target}
+                  value={this.props.breakTime}
                   onChange={(e) => this.handleChange(e)}
                 >
-                  <option value=""></option>
+                  <option value="00"></option>
                   <option value={5}>5 Minutes</option>
                   <option value={10}>10 Minutes</option>
                 </CustomInput>
@@ -64,16 +59,15 @@ class TimeSelector extends React.Component {
                 </label>
               </Col>
             </Row>
-            <Row xs={1} className="select_text">
-              <Col className="control_Selector">
+            <Row className="select_text">
+              <Col xs={12} sm={12} md={12} lg={12} className="control_Selector">
                 <CustomInput
-                  className
                   type="select"
                   id="work_selector"
-                  value={this.state.target}
+                  value={this.props.workTime}
                   onChange={(e) => this.handleChange(e)}
                 >
-                  <option value=""></option>
+                  <option value="null"></option>
                   <option value={25}>25 Minutes</option>
                   <option value={50}>50 Minutes</option>
                 </CustomInput>

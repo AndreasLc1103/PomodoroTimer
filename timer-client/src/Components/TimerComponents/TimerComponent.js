@@ -9,9 +9,11 @@ class TimerComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isStarted: false,
+      isStarted: true,
       workTimerActive: false,
       breakTimerActive: false,
+      workTime: null,
+      breakTime: null,
       current_timer: {
         mintutes: "00",
         seconds: "00",
@@ -62,6 +64,13 @@ class TimerComponent extends React.Component {
 
   handleResetClicked() {}
 
+  handleSelectedWorkTime(e) {
+    this.setState({ workTime: e.target.value });
+  }
+  handleSelectedBreakTime(e) {
+    this.setState({ breakTime: e.target.value });
+  }
+
   render() {
     return (
       <Container className="themed-container" fluid={true}>
@@ -92,7 +101,11 @@ class TimerComponent extends React.Component {
         <Row className="controls">
           <Col></Col>
           <Col xs={auto} sm={auto} md={8} lg={8} xl={8}>
-            <ControlsComponent />
+            <ControlsComponent
+              active={this.state.isStarted}
+              handleBreakTimeChoice={(e) => this.handleSelectedBreakTime(e)}
+              handleWorkTimeChoice={(e) => this.handleSelectedWorkTime(e)}
+            />
           </Col>
           <Col></Col>
         </Row>

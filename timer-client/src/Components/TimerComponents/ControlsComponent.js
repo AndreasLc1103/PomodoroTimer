@@ -28,8 +28,15 @@ class ControlsComponent extends React.Component {
   /**
    *handleReset() is a
    */
-  hanldeReset() {
+  handleReset() {
     this.props.handleResetClick();
+  }
+
+  handleWorkTimeSelect(e) {
+    this.props.handleWorkTimeChoice(e);
+  }
+  handleBreakTimeSelect(e) {
+    this.props.handleBreakTimeChoice(e);
   }
   /**
    *render() renders jsx to display to the user the control
@@ -59,7 +66,7 @@ class ControlsComponent extends React.Component {
         Pause
       </Button>
     );
-    if (this.props.active) {
+    if (!this.props.active) {
       activeButton = startButton;
     } else {
       activeButton = pauseButton;
@@ -72,14 +79,20 @@ class ControlsComponent extends React.Component {
           {/* Creates the left most column*/}
           <Col xs={auto} sm={6} md={6} lg={6}>
             <FormGroup>
-              <TimeSelector typeSelect="workTime" />
+              <TimeSelector
+                typeSelect="workTime"
+                handleChange={(e) => this.handleWorkTimeSelect(e)}
+              />
             </FormGroup>
             {activeButton}
           </Col>
           {/* Creates the right most column*/}
           <Col xs={auto} sm={6} md={6} lg={6}>
             <FormGroup>
-              <TimeSelector typeSelect="breakTime" />
+              <TimeSelector
+                typeSelect="breakTime"
+                handleChange={(e) => this.handleBreakTimeSelect(e)}
+              />
             </FormGroup>
             <Button color="danger" size="sm" block>
               reset
