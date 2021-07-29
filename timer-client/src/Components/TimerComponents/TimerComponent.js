@@ -9,6 +9,7 @@ class TimerComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isStarted: false,
       workTimerActive: false,
       breakTimerActive: false,
       current_timer: {
@@ -17,10 +18,11 @@ class TimerComponent extends React.Component {
       },
     };
   }
+
   /**
-   * Tick is a function that manages the timer state and decrements the count used to keep track of time
+   * updateTimer handles the state of the timer and updates the time.
    */
-  Tick() {
+  updateTimer() {
     const current_time = { ...this.current_timer };
     this.current_time.mintutes = Number(this.current_time.mintutes);
     this.current_time.seconds = Number(this.current_time.seconds);
@@ -32,9 +34,33 @@ class TimerComponent extends React.Component {
     } else {
       this.current_time.seconds = String(this.current_time.seconds - 1);
     }
-
-    this.setState({ current_time: { ...current_time } });
+    this.setState({ current_timer: { ...current_time } });
   }
+  /**
+   * Tick is a function that manages the timer state and decrements the count used to keep track of time
+   */
+  tick() {
+    this.activeTimer = setInterval(() => this.updateTimer(), 1000);
+  }
+  /**
+   * Reset() is used to reinitalize the timer to the intial state.
+   */
+  reset() {}
+
+  /**
+   * handleStop cancels the interval function that is called.
+   */
+  handleStop() {
+    clearInterval(this.activeTimer);
+  }
+  /**
+   * initiates the timer clock to start decrementing
+   */
+  handleStartClicked() {
+    this.tick();
+  }
+
+  handleResetClicked() {}
 
   render() {
     return (
@@ -53,7 +79,14 @@ class TimerComponent extends React.Component {
         </Row>
         <Row className="TimeDisplay">
           <Col></Col>
-          <Col>{<TimeDisplay current_time={this.state.current_timer} />}</Col>
+          <Col>
+            {
+              <TimeDisplay
+                minutes={this.state.current_timer.mintutes}
+                seconds={this.state.current_timer.seconds}
+              />
+            }
+          </Col>
           <Col></Col>
         </Row>
         <Row className="controls">

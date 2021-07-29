@@ -12,11 +12,59 @@ import TimeSelector from "./ControlComponents/TimeSelector";
  */
 class ControlsComponent extends React.Component {
   /**
+   * Calls the parent components stop function.
+   */
+  handleStartClick() {
+    this.props.onStartClick();
+  }
+  /**
+   * handlePauseClick() lifts
+   * state to the lowest common parent to pause
+   * the timer.
+   */
+  handlePauseClick() {
+    this.props.onPauseClick();
+  }
+  /**
+   *handleReset() is a
+   */
+  hanldeReset() {
+    this.props.handleResetClick();
+  }
+  /**
    *render() renders jsx to display to the user the control
    elements of this component.
    * @returns A genertated view 
    */
   render() {
+    let activeButton = null;
+
+    const startButton = (
+      <Button
+        color="primary"
+        size="sm"
+        block
+        onClick={() => this.handleStartClick()}
+      >
+        Start
+      </Button>
+    );
+    const pauseButton = (
+      <Button
+        color="secondary"
+        size="sm"
+        block
+        onClick={() => this.handlePauseClick()}
+      >
+        Pause
+      </Button>
+    );
+    if (this.props.active) {
+      activeButton = startButton;
+    } else {
+      activeButton = pauseButton;
+    }
+
     return (
       <Container fluid={true}>
         {/* Stores all the components in a single row. */}
@@ -26,9 +74,7 @@ class ControlsComponent extends React.Component {
             <FormGroup>
               <TimeSelector typeSelect="workTime" />
             </FormGroup>
-            <Button color="primary" size="sm" block>
-              Start
-            </Button>
+            {activeButton}
           </Col>
           {/* Creates the right most column*/}
           <Col xs={auto} sm={6} md={6} lg={6}>
