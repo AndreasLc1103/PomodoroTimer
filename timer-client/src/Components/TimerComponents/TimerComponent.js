@@ -8,13 +8,14 @@ import TimeDisplay from "../TimerComponents/TimeDisplay";
 class TimerComponent extends React.Component {
   constructor(props) {
     super(props);
+    this.activeTimer = null;
     this.state = {
       isStarted: false,
       workTimerActive: true,
       breakTimerActive: false,
       workTime: null,
       breakTime: null,
-      currentTimer: {
+      timer: {
         minutes: "00",
         seconds: "00",
       },
@@ -25,25 +26,26 @@ class TimerComponent extends React.Component {
    * updateTimer handles the state of the timer and updates the time.
    */
   updateTimer() {
-    const currentTime = { ...this.state.currentTimer };
+    const currentTime = { ...this.state.timer };
     currentTime.minutes = Number(currentTime.minutes);
     currentTime.seconds = Number(currentTime.seconds);
     if (currentTime.minutes !== 0 && currentTime.seconds === 0) {
-      currentTime.minutes = String(currentTime.seconds - 1);
+      currentTime.minutes = String(currentTime.minutes - 1);
       currentTime.seconds = "59";
     } else if (currentTime.seconds === 0 && currentTime.minutes === 0) {
       // Thinking on what to do
+      clearInterval(this.activeTimer);
     } else {
       currentTime.seconds = String(currentTime.seconds - 1);
     }
-    console.log("I am making it here\n " + currentTime);
-    this.setState({ currenTimer: { ...currentTime } });
+    console.log("I am making it here\n " + JSON.stringify(currentTime));
+    this.setState({ timer: { ...currentTime } });
   }
   /**
    * Tick is a function that manages the timer state and decrements the count used to keep track of time
    */
   tick() {
-    this.activeTimer = setInterval(this.updateTimer, 1000);
+    this.activeTimer = setInterval(() => this.updateTimer(), 1000);
   }
   /**
    * Reset() is used to reinitalize the timer to the intial state.
@@ -70,7 +72,7 @@ class TimerComponent extends React.Component {
         isStarted: true,
         breakTimerActive: true,
         workTimerActive: false,
-        currentTimer: {
+        timer: {
           minutes: String(this.state.breakTime),
           seconds: "00",
         },
@@ -80,7 +82,7 @@ class TimerComponent extends React.Component {
         isStarted: true,
         breakTimerActive: false,
         workTimerActive: true,
-        currentTimer: {
+        timer: {
           minutes: String(this.state.workTime),
           seconds: "00",
         },
@@ -116,8 +118,8 @@ class TimerComponent extends React.Component {
           <Col>
             {
               <TimeDisplay
-                minutes={this.state.currentTimer.minutes}
-                seconds={this.state.currentTimer.seconds}
+                minutes={this.state.timer.minutes}
+                seconds={this.state.timer.seconds}
               />
             }
           </Col>
