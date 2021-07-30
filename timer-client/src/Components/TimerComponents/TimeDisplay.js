@@ -8,15 +8,14 @@ import { Col, Container, Row } from "reactstrap";
  * @AndreasLc1103
  */
 class TimeDisplay extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <Container fluid={true}>
         <Row>
           <Col></Col>
-          <Col className="time">{this.props.current_time}</Col>
+          <Col className="time">
+            <h1>{this.props.minutes + ":" + this.props.seconds}</h1>
+          </Col>
           <Col></Col>
         </Row>
       </Container>
