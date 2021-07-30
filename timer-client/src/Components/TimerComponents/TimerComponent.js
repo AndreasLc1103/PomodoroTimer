@@ -9,13 +9,13 @@ class TimerComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isStarted: true,
-      workTimerActive: false,
+      isStarted: false,
+      workTimerActive: true,
       breakTimerActive: false,
       workTime: null,
       breakTime: null,
-      current_timer: {
-        mintutes: "00",
+      currentTimer: {
+        minutes: "00",
         seconds: "00",
       },
     };
@@ -25,24 +25,25 @@ class TimerComponent extends React.Component {
    * updateTimer handles the state of the timer and updates the time.
    */
   updateTimer() {
-    const current_time = { ...this.current_timer };
-    this.current_time.mintutes = Number(this.current_time.mintutes);
-    this.current_time.seconds = Number(this.current_time.seconds);
-    if (current_time.seconds === 0 && current_time.seconds !== 0) {
-      this.current_time.mintutes = String(this.current_time.seconds - 1);
-      this.current_time.seconds = "59";
-    } else if (current_time.seconds === 0 && current_time.mintutes === 0) {
+    const currentTime = { ...this.state.currentTimer };
+    currentTime.minutes = Number(currentTime.minutes);
+    currentTime.seconds = Number(currentTime.seconds);
+    if (currentTime.minutes !== 0 && currentTime.seconds === 0) {
+      currentTime.minutes = String(currentTime.seconds - 1);
+      currentTime.seconds = "59";
+    } else if (currentTime.seconds === 0 && currentTime.minutes === 0) {
       // Thinking on what to do
     } else {
-      this.current_time.seconds = String(this.current_time.seconds - 1);
+      currentTime.seconds = String(currentTime.seconds - 1);
     }
-    this.setState({ current_timer: { ...current_time } });
+    console.log("I am making it here\n " + currentTime);
+    this.setState({ currenTimer: { ...currentTime } });
   }
   /**
    * Tick is a function that manages the timer state and decrements the count used to keep track of time
    */
   tick() {
-    this.activeTimer = setInterval(() => this.updateTimer(), 1000);
+    this.activeTimer = setInterval(this.updateTimer, 1000);
   }
   /**
    * Reset() is used to reinitalize the timer to the intial state.
@@ -59,9 +60,33 @@ class TimerComponent extends React.Component {
    * initiates the timer clock to start decrementing
    */
   handleStartClicked() {
+    this.setActiveTimer();
     this.tick();
   }
 
+  setActiveTimer() {
+    if (this.state.breakTimerActive) {
+      this.setState({
+        isStarted: true,
+        breakTimerActive: true,
+        workTimerActive: false,
+        currentTimer: {
+          minutes: String(this.state.breakTime),
+          seconds: "00",
+        },
+      });
+    } else if (this.state.workTimerActive) {
+      this.setState({
+        isStarted: true,
+        breakTimerActive: false,
+        workTimerActive: true,
+        currentTimer: {
+          minutes: String(this.state.workTime),
+          seconds: "00",
+        },
+      });
+    }
+  }
   handleResetClicked() {}
 
   handleSelectedWorkTime(e) {
@@ -91,8 +116,8 @@ class TimerComponent extends React.Component {
           <Col>
             {
               <TimeDisplay
-                minutes={this.state.current_timer.mintutes}
-                seconds={this.state.current_timer.seconds}
+                minutes={this.state.currentTimer.minutes}
+                seconds={this.state.currentTimer.seconds}
               />
             }
           </Col>
@@ -103,6 +128,8 @@ class TimerComponent extends React.Component {
           <Col xs={auto} sm={auto} md={8} lg={8} xl={8}>
             <ControlsComponent
               active={this.state.isStarted}
+              onStartClick={() => this.handleStartClicked()}
+              onPauseClick={() => this.handleStop()}
               handleBreakTimeChoice={(e) => this.handleSelectedBreakTime(e)}
               handleWorkTimeChoice={(e) => this.handleSelectedWorkTime(e)}
             />
