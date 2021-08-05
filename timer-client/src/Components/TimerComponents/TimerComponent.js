@@ -34,7 +34,7 @@ class TimerComponent extends React.Component {
       currentTime.seconds = "59";
     } else if (currentTime.seconds === 0 && currentTime.minutes === 0) {
       // Thinking on what to do
-      clearInterval(this.activeTimer);
+      this.handleStop();
     } else {
       currentTime.seconds = String(currentTime.seconds - 1);
     }
@@ -50,13 +50,23 @@ class TimerComponent extends React.Component {
   /**
    * Reset() is used to reinitalize the timer to the intial state.
    */
-  reset() {}
-
+  reset() {
+    clearInterval(this.activeTimer);
+    return {
+      isStarted: false,
+      workTimerActive: this.state.workTimerActive,
+      breakTimerActive: this.state.breakTimerActive,
+      workTime: this.state.workTime,
+      breakTime: this.state.workTime,
+      timer: { minutes: this.state.workTime, seconds: "00" },
+    };
+  }
   /**
    * handleStop cancels the interval function that is called.
    */
   handleStop() {
     clearInterval(this.activeTimer);
+    this.setState({ isStarted: false });
   }
   /**
    * initiates the timer clock to start decrementing
@@ -89,7 +99,9 @@ class TimerComponent extends React.Component {
       });
     }
   }
-  handleResetClicked() {}
+  handleResetOnclick() {
+    this.setState(this.reset());
+  }
 
   handleSelectedWorkTime(e) {
     this.setState({ workTime: e.target.value });
@@ -134,6 +146,7 @@ class TimerComponent extends React.Component {
               onPauseClick={() => this.handleStop()}
               handleBreakTimeChoice={(e) => this.handleSelectedBreakTime(e)}
               handleWorkTimeChoice={(e) => this.handleSelectedWorkTime(e)}
+              handleResetClick={() => this.handleResetOnclick()}
             />
           </Col>
           <Col></Col>

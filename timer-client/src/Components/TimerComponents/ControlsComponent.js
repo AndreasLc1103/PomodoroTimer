@@ -94,7 +94,12 @@ class ControlsComponent extends React.Component {
                 handleChange={(e) => this.handleBreakTimeSelect(e)}
               />
             </FormGroup>
-            <Button color="danger" size="sm" block>
+            <Button
+              color="danger"
+              size="sm"
+              block
+              onClick={() => this.handleReset()}
+            >
               reset
             </Button>
           </Col>
