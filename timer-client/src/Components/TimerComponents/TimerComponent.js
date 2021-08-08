@@ -11,6 +11,7 @@ class TimerComponent extends React.Component {
     this.activeTimer = null;
     this.state = {
       isStarted: false,
+      isComplete: false,
       workTimerActive: true,
       breakTimerActive: false,
       workTime: null,
@@ -99,10 +100,19 @@ class TimerComponent extends React.Component {
       });
     }
   }
+  /**
+    handleResetOnclick is a handler function that 
+    is used to call set state on the component after
+    clicking the reset button
+   */
   handleResetOnclick() {
     this.setState(this.reset());
   }
-
+  /**
+   * handleSelectedWorkTime() is a handler function used to
+   * call a setState on the componenent after it is called.
+   * @param {Event} e given event to get value.
+   */
   handleSelectedWorkTime(e) {
     this.setState({ workTime: e.target.value });
   }

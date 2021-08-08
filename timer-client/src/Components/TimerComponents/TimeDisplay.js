@@ -14,7 +14,7 @@ class TimeDisplay extends React.Component {
         <Row>
           <Col></Col>
           <Col className="time">
-            <h1>{this.props.minutes + ":" + this.props.seconds}</h1>
+            {this.props.minutes + ":" + this.props.seconds}
           </Col>
           <Col></Col>
         </Row>
