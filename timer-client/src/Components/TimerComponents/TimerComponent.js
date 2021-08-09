@@ -52,15 +52,28 @@ class TimerComponent extends React.Component {
    * Reset() is used to reinitalize the timer to the intial state.
    */
   reset() {
+    // ends the interval and sets the state
     clearInterval(this.activeTimer);
-    return {
+    const state = {
       isStarted: false,
       workTimerActive: this.state.workTimerActive,
       breakTimerActive: this.state.breakTimerActive,
       workTime: this.state.workTime,
       breakTime: this.state.workTime,
-      timer: { minutes: this.state.workTime, seconds: "00" },
+      timer: { minutes: null, seconds: "00" },
     };
+    switch (this.handleActiveTimer()) {
+      case "BreakTime":
+        state.timer.minutes = this.state.breakTime;
+        break;
+      case "WorkTime":
+        state.timer.minutes = this.state.workTime;
+        break;
+      default:
+        state.timer.minutes = "00";
+        break;
+    }
+    return state;
   }
   /**
    * handleStop cancels the interval function that is called.
@@ -137,6 +150,21 @@ class TimerComponent extends React.Component {
   }
   handleSelectedBreakTime(e) {
     this.setState({ breakTime: e.target.value });
+  }
+  /**
+   * handleActiveTimer() is responsible for
+   * returing which timer is active to allow for easier
+   * manipulation and management of state.
+   */
+  handleActiveTimer() {
+    if (this.state.breakTimerActive && this.state.breakTime !== null) {
+      return "BreakTime";
+    }
+    if (this.state.workTimerActive && this.state.workTime !== null) {
+      return "WorkTime";
+    }
+
+    return null;
   }
 
   render() {
