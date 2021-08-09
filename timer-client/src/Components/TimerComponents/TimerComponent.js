@@ -1,7 +1,7 @@
 import { auto } from "@popperjs/core";
 import React from "react";
 import { ReactDOM } from "react-dom";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Footer } from "reactstrap";
 import ControlsComponent from "./ControlsComponent";
 import TimeDisplay from "../TimerComponents/TimeDisplay";
 
@@ -73,8 +73,27 @@ class TimerComponent extends React.Component {
    * initiates the timer clock to start decrementing
    */
   handleStartClicked() {
-    this.setActiveTimer();
-    this.tick();
+    if (this.checkSelectedTimes()) {
+      this.setActiveTimer();
+      this.tick();
+    }
+  }
+  /**
+   * checkSelectedTimes() ensures the user enters
+   * both the work and break times for the timer
+   */
+  checkSelectedTimes() {
+    if (this.state.breakTime === null && this.state.workTime === null) {
+      alert("you will need to select both a break and work time interval.");
+      return false;
+    } else if (this.state.breakTime === null) {
+      alert("you will need to select a break time interval.");
+
+      return false;
+    } else if (this.state.workTime === null) {
+      alert("You will need to select a work time interval.");
+      return false;
+    } else return true;
   }
 
   setActiveTimer() {
