@@ -49,7 +49,7 @@ class ControlsComponent extends React.Component {
     const startButton = (
       <Button
         color="primary"
-        size="sm"
+        size="md"
         block
         onClick={() => this.handleStartClick()}
       >
@@ -59,7 +59,7 @@ class ControlsComponent extends React.Component {
     const pauseButton = (
       <Button
         color="secondary"
-        size="sm"
+        size="md"
         block
         onClick={() => this.handlePauseClick()}
       >
@@ -96,7 +96,7 @@ class ControlsComponent extends React.Component {
             </FormGroup>
             <Button
               color="danger"
-              size="sm"
+              size="md"
               block
               onClick={() => this.handleReset()}
             >
