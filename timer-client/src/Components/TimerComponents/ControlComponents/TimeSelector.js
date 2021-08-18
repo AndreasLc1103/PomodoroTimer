@@ -1,6 +1,5 @@
-import { auto } from "@popperjs/core";
 import React from "react";
-import { ReactDOM } from "react-dom";
+
 import { Container, Row, Col, CustomInput } from "reactstrap";
 
 /**

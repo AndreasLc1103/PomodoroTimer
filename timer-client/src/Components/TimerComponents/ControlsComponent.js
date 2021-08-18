@@ -1,6 +1,5 @@
 import { auto } from "@popperjs/core";
 import React from "react";
-import { ReactDOM } from "react";
 import { Container, Row, Col, Button, FormGroup } from "reactstrap";
 import TimeSelector from "./ControlComponents/TimeSelector";
 

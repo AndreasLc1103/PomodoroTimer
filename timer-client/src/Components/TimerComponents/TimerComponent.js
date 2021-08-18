@@ -1,7 +1,6 @@
 import { auto } from "@popperjs/core";
 import React from "react";
-import { ReactDOM } from "react-dom";
-import { Container, Row, Col, Footer } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import ControlsComponent from "./ControlsComponent";
 import TimeDisplay from "../TimerComponents/TimeDisplay";
 
@@ -37,7 +36,11 @@ class TimerComponent extends React.Component {
       // Thinking on what to do
       this.handleStop();
     } else {
-      currentTime.seconds = String(currentTime.seconds - 1);
+      if (currentTime.seconds < 10) {
+        currentTime.seconds = "0" + String(currentTime.seconds - 1);
+      } else {
+        currentTime.seconds = String(currentTime.seconds - 1);
+      }
     }
     console.log("I am making it here\n " + JSON.stringify(currentTime));
     this.setState({ timer: { ...currentTime } });
