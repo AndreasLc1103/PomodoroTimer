@@ -25,7 +25,7 @@ class ControlsComponent extends React.Component {
     this.props.onPauseClick();
   }
   /**
-   *handleReset() is a
+   *handleReset() calls the props reset when clicked function
    */
   handleReset() {
     this.props.handleResetClick();
